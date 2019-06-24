@@ -551,6 +551,7 @@ export class WalletProvider {
   }
 
   private updateLocalTxHistory(wallet: any, opts: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts updateLocalTxHistory');
     return new Promise((resolve, reject) => {
       opts = opts ? opts : {};
       let FIRST_LIMIT = 5;
@@ -827,6 +828,7 @@ export class WalletProvider {
 
   // Approx utxo amount, from which the uxto is economically redeemable
   public getLowAmount(wallet: any): Promise<any> {
+    this.logger.debug('############################ wallet.ts getLowAmount');
     return new Promise((resolve, reject) => {
       this.getMinFee(wallet)
         .then(fee => {
@@ -841,6 +843,8 @@ export class WalletProvider {
 
   // Approx utxo amount, from which the uxto is economically redeemable
   public getMinFee(wallet: any, nbOutputs?: number): Promise<any> {
+    this.logger.debug('########################### wallet.ts getMinFee ');
+
     return new Promise((resolve, reject) => {
       this.feeProvider
         .getFeeLevels(wallet.coin)
@@ -951,6 +955,7 @@ export class WalletProvider {
   }
 
   public getTxHistory(wallet: any, opts: any): Promise<any> {
+    this.logger.debug('###################### wallet.ts getTxHistory');
     return new Promise((resolve, reject) => {
       opts = opts ? opts : {};
 
@@ -987,6 +992,9 @@ export class WalletProvider {
   }
 
   public createTx(wallet: any, txp: any) {
+    this.logger.debug(
+      '####################### wallet.ts: createTx : v2/txproposals'
+    );
     return new Promise((resolve, reject) => {
       if (lodash.isEmpty(txp) || lodash.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
@@ -1002,6 +1010,7 @@ export class WalletProvider {
   }
 
   public publishTx(wallet: any, txp: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: publishTx');
     return new Promise((resolve, reject) => {
       if (lodash.isEmpty(txp) || lodash.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
@@ -1021,6 +1030,7 @@ export class WalletProvider {
   }
 
   signTx(wallet: any, txp: any, password: string): Promise<any> {
+    this.logger.debug('####################### wallet.ts: signTx' + JSON.stringify(txp) );
     return new Promise((resolve, reject) => {
       if (!wallet || !txp) return reject('MISSING_PARAMETER');
 
@@ -1040,6 +1050,7 @@ export class WalletProvider {
   }
 
   public broadcastTx(wallet: any, txp: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: signTx');
     return new Promise((resolve, reject) => {
       if (lodash.isEmpty(txp) || lodash.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
@@ -1070,6 +1081,7 @@ export class WalletProvider {
   }
 
   public rejectTx(wallet: any, txp: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: rejectTx');
     return new Promise((resolve, reject) => {
       if (lodash.isEmpty(txp) || lodash.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
@@ -1083,6 +1095,7 @@ export class WalletProvider {
   }
 
   public removeTx(wallet: any, txp: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: removeTx');
     return new Promise((resolve, reject) => {
       if (lodash.isEmpty(txp) || lodash.isEmpty(wallet))
         return reject('MISSING_PARAMETER');
@@ -1234,6 +1247,7 @@ export class WalletProvider {
   }
 
   public getBalance(wallet: any, opts: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: getBalance');
     return new Promise((resolve, reject) => {
       opts = opts || {};
       wallet.getBalance(opts, (err, resp) => {
@@ -1244,6 +1258,7 @@ export class WalletProvider {
   }
 
   public getLowUtxos(wallet: any): Promise<any> {
+    this.logger.debug('########################### wallet.ts getLowUtxos');
     return new Promise((resolve, reject) => {
       wallet.getUtxos(
         {
@@ -1403,6 +1418,7 @@ export class WalletProvider {
     publishedTxp: any,
     password: any
   ): Promise<any> {
+    this.logger.debug('####################### wallet.ts: signAndBroadcast');
     return new Promise((resolve, reject) => {
       this.onGoingProcessProvider.set('signingTx');
       this.signTx(wallet, publishedTxp, password)
@@ -1438,6 +1454,7 @@ export class WalletProvider {
   }
 
   public publishAndSign(wallet: any, txp: any): Promise<any> {
+    this.logger.debug('####################### wallet.ts: publishAndSign');
     return new Promise((resolve, reject) => {
       // Already published?
       if (txp.status == 'pending') {

@@ -193,7 +193,7 @@ export class HomePage {
 
   private listenForEvents() {
     // BWS Events: Update Status per Wallet
-    // NewBlock, NewCopayer, NewAddress, NewTxProposal, TxProposalAcceptedBy, TxProposalRejectedBy, txProposalFinallyRejected,
+    // NewBlock, NewCopayer, NewAddress, , TxProposalAcceptedBy, TxProposalRejectedBy, txProposalFinallyRejected,
     // txProposalFinallyAccepted, TxProposalRemoved, NewIncomingTx, NewOutgoingTx
     this.events.subscribe('bwsEvent', (walletId: string) => {
       if (this.recentTransactionsEnabled) this.getNotifications();
