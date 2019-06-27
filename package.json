@@ -1,9 +1,9 @@
 {
   "//": "        Modify it in the app-template directory",
-  "name": "copay",
+  "name": "mgc-wallet",
   "description": "A Secure Bitcoin Wallet",
-  "author": "BitPay",
-  "version": "4.2.0",
+  "author": "Felix Lee(ustcerlf@gmail.com)",
+  "version": "1.2.2",
   "keywords": [
     "bitcoin",
     "wallet",
@@ -125,7 +125,7 @@
     "@ngx-translate/core": "9.1.1",
     "@types/papaparse": "4.1.33",
     "@zxing/ngx-scanner": "1.1.0-dev.c32019",
-    "Mgc-Client": "git+ssh:git@github.com:MagnaChain/Mgc-Client.git",
+    "mgc-client": "git+ssh:git@github.com:MagnaChain/Mgc-Client.git",
     "angular2-moment": "1.7.1",
     "bitauth": "0.3.2",
     "buffer-compare": "1.1.1",

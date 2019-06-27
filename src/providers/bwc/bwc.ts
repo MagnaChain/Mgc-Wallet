@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Logger } from '../../providers/logger/logger';
 
-import * as BWC from 'Mgc-Client';
+import * as BWC from 'mgc-client';
 
 @Injectable()
 export class BwcProvider {
